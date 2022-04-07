@@ -24,9 +24,9 @@ namespace ClubeLeitura.ConsoleApp.Compartilhado
             //editar
         }
 
-        public bool Excluir(T entidade)
+        public void Excluir(int numeroSelecionado)
         {
-            return registros.Remove(entidade);
+            registros.RemoveAt(numeroSelecionado);
         }
 
         public EntidadeBase SelecionarRegistro(int numeroRegistro)
