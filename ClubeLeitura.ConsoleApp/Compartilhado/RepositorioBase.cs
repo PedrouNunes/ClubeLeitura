@@ -13,9 +13,10 @@ namespace ClubeLeitura.ConsoleApp.Compartilhado
             registros = new List<T>();
         }
 
-        public virtual void Inserir(T entidade)
+        public virtual string Inserir(T entidade)
         {
             registros.Add(entidade);
+            return "Inserido com Sucesso!";
         }
 
         public void Editar(int numeroSelecionado, EntidadeBase entidade)
@@ -33,18 +34,14 @@ namespace ClubeLeitura.ConsoleApp.Compartilhado
             return registros.Find(x => x.numero == numeroRegistro);
         }
 
-        public EntidadeBase[] SelecionarTodos()
+        public List<T> SelecionarTodos()
         {
-            return registros.ToArray();
+            return registros;
         }
 
         public bool ExisteRegistro(int numeroRegistro)
         {
-            foreach (EntidadeBase registro in registros)
-                if (registro.numero == numeroRegistro)
-                    return true;
-
-            return false;
+            return registros.Exists(x => x.numero == numeroRegistro);
         }
     }
 }
